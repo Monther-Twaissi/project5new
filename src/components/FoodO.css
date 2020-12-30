@@ -11,9 +11,13 @@
   position: absolute;
   bottom: 3px;
   right: 3px;
+  z-index: 99;
 }
 .MuiCard-root {
   position: relative !important;
+}
+.MuiCardContent-root {
+  margin-bottom: 10px;
 }
 /* .MuiPaper-rounded {
   border-top: 0.5px solid rgb(235, 235, 235);

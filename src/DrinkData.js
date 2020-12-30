@@ -34,7 +34,7 @@ const Drink = [
     id: 50,
     drinkName: "Honest Kids® Appley Ever After® Organic Juice Drink",
     drinkDesc:
-      "Honest Kids Juice drink is sweetened only with fruit juice, and it’s an organic drink perfect for a kids meal! If you’re looking for kids organic juice drink options.",
+      "Honest Kids Juice drink is sweetened only with fruit juice, and it’s an organic drink perfect for a kids meal!",
     drinkImg:
       "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/hero/desktop/t-mcdonalds-appley-ever-after.jpg?$Product_Desktop$",
   },

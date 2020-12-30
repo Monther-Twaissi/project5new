@@ -1,0 +1,126 @@
+import React, { Component } from "react";
+import "./Contact_us.css";
+import axios from "axios";
+
+class ContactUs extends Component {
+  constructor() {
+    super();
+    this.state = {
+      fullName: "",
+      email: "",
+      subject: "",
+      textarea: "",
+    };
+    this.changeFullName = this.changeFullName.bind(this);
+    this.changeEmail = this.changeEmail.bind(this);
+    this.changeSubject = this.changeSubject.bind(this);
+    this.changeTextarea = this.changeTextarea.bind(this);
+
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  changeFullName(event) {
+    this.setState({
+      fullName: event.target.value,
+    });
+    // console.log('fullName: ' + this.state.fullName);
+  }
+
+  changeEmail(event) {
+    this.setState({
+      email: event.target.value,
+    });
+  }
+
+  changeSubject(event) {
+    this.setState({
+      subject: event.target.value,
+    });
+  }
+
+  changeTextarea(event) {
+    this.setState({
+      textarea: event.target.value,
+    });
+  }
+
+  onSubmit(event) {
+    event.preventDefault();
+
+    const registered = {
+      fullName: this.state.fullName,
+      email: this.state.email,
+      subject: this.state.subject,
+      textarea: this.state.textarea,
+    };
+    // console.log(registered);
+
+    axios
+      .post("http://localhost:7000/app/signup", registered)
+      .then((response) => {
+        console.log(response.data);
+        alert("succsses signup");
+      });
+
+    this.setState({
+      fullName: "",
+      email: "",
+      subject: "",
+      textarea: "",
+    });
+  }
+
+  render() {
+    return (
+      <div className="container__all">
+        <div className="container__us">
+          <p>CONTACT US</p>
+          <form onSubmit={this.onSubmit}>
+            <div className="login">
+              <input
+                type="text"
+                placeholder="Your Name"
+                className="input"
+                onChange={this.changeFullName}
+                value={this.state.fullName}
+                required
+              />
+              <input
+                type="text"
+                placeholder="Your Email Address"
+                className="input"
+                onChange={this.changeEmail}
+                value={this.state.email}
+                required
+              />
+            </div>
+            <div className="subject">
+              <input
+                type="text"
+                placeholder="Subject"
+                className="input"
+                onChange={this.changeSubject}
+                value={this.state.subject}
+                required
+              />
+            </div>
+            <div className="msg">
+              <textarea
+                className="area"
+                placeholder="Your Message"
+                onChange={this.changeTextarea}
+                value={this.state.textarea}
+                required
+              />
+            </div>
+            <button type="submit" className="btn" value="Submit">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default ContactUs;

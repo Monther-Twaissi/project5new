@@ -8,6 +8,7 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import Footer from "./components/footer";
 import Log from "./components/log";
 import LandingPage from "./LandingPage";
+import ContactUs from "./components/ContactUs";
 function App() {
   return (
     <Router basename="/">
@@ -18,6 +19,7 @@ function App() {
           <Route path="/food" exact component={FoodList} />
           <Route path="/drink" component={DrinkList} />
           <Route path="/log" component={Log} />
+          <Route path="/contact" component={ContactUs} />
         </Switch>
         <Footer />
       </div>

@@ -1,7 +1,7 @@
-:root{
-  --div-primary-colors:#C71E01;
-  --div-secondary-color: #FE9E47;
-  --div-button: #6F7219;
+:root {
+  --div-primary-colors: #c71e01;
+  --div-secondary-color: #fe9e47;
+  --div-button: #6f7219;
 }
 .about-container {
   padding: 10px 10px 10% 6%;
@@ -9,15 +9,15 @@
 }
 
 .about-header {
-  color:  var(--div-secondary-color);
-  font-family: 'Cairo', sans-serif;
+  color: var(--div-secondary-color);
+  font-family: "Cairo", sans-serif;
 }
 .about-paragraph {
   color: black;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .about-row-container::after {
-  content: '';
+  content: "";
   display: flex;
   align-items: center;
   justify-content: center;
@@ -66,7 +66,7 @@
   .about-image-style {
     margin: auto;
   }
-  .about-paragraph{
+  .about-paragraph {
     text-align: center;
     justify-content: center;
   }

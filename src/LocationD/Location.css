@@ -1,0 +1,31 @@
+:root{
+    --div-primary-colors:#C71E01;
+    --div-secondary-color: #FE9E47;
+    --div-button: #6F7219;
+  }
+.location-section{
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 20vh;
+    margin: 70px ;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+.location-head{
+    grid-column: 1/span2;
+}
+.location-paragraph{
+    color: var(--div-secondary-color);
+    font-size: 30px;
+}
+
+.location-header{
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+.location-hours{
+    color:  var(--div-secondary-color);
+    font-size: large;
+}

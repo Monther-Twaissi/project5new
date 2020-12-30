@@ -9,15 +9,22 @@
   justify-content: space-between;
   align-items: flex-end;
   position: absolute;
+  padding: 0.2rem;
   bottom: 3px;
   right: 3px;
-  z-index: 99;
 }
 .MuiCard-root {
   position: relative !important;
 }
 .MuiCardContent-root {
   margin-bottom: 10px;
+}
+.MuiButton-root {
+  outline: none !important;
+}
+
+.MuiButtonBase-root {
+  outline: none !important;
 }
 /* .MuiPaper-rounded {
   border-top: 0.5px solid rgb(235, 235, 235);

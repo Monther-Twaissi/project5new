@@ -59,7 +59,7 @@ export default function FoodCard(props) {
         <div className="Space__bet">
           <FormControl className={classes.formControl}>
             <InputLabel id="demo-controlled-open-select-label">
-              quantity
+              Quantity
             </InputLabel>
             <Select
               labelId="demo-controlled-open-select-label"

@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import "./FoodO.css";
 import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
-
+import axios from "axios";
 const useStyles = makeStyles((theme) => ({
   root: { minWidth: 200, height: 400 },
   formControl: {
@@ -34,6 +34,23 @@ export default function FoodCard(props) {
 
   const handleOpen = () => {
     setOpen(true);
+  };
+
+  const AddItem = async (e) => {
+    e.preventDefault();
+    const newName = "Group 2";
+    const newPostImg =
+      "https://cdn-www.bluestacks.com/bs-images/89cfc0bdd6e77f409b33c59d5289b155.png";
+    if (quantity !== "") {
+      let newJSON = await {
+        username: newName,
+        cardName: props.foodName,
+        cardDesc: props.foodDesc,
+        cardImg: props.foodImg,
+        quantity: quantity,
+      };
+      axios.post("http://localhost:5000/api/orders", newJSON).then(() => {});
+    }
   };
 
   return (
@@ -78,7 +95,11 @@ export default function FoodCard(props) {
               <MenuItem value={6}>6</MenuItem>
             </Select>
           </FormControl>
-          <Button disabled={quantity ? false : true} variant="contained">
+          <Button
+            onClick={AddItem}
+            disabled={quantity ? false : true}
+            variant="contained"
+          >
             Order now
           </Button>
         </div>

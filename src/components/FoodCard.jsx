@@ -7,19 +7,17 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import "./O_food.css";
+import "./FoodO.css";
 import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    minWidth: 200,
-  },
+  root: { minWidth: 200, minHeight: 390 },
   formControl: {
     minWidth: 120,
   },
 }));
 
-export default function O_card() {
+export default function FoodCard(props) {
   const [quantity, setQuantity] = React.useState("");
   const [open, setOpen] = React.useState(false);
 
@@ -45,20 +43,19 @@ export default function O_card() {
           component="img"
           alt="Contemplative Reptile"
           height="140"
-          image="https://kitchen.sayidaty.net/uploads/small/a0/a0c36266a458df178946b7296330eaf1_w750_h500.jpg"
+          image={props.foodImg}
           title="Contemplative Reptile"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Lizard
+            {props.foodName}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            {props.foodDesc}
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions disableSpacing>
+      <CardActions>
         <div className="Space__bet">
           <FormControl className={classes.formControl}>
             <InputLabel id="demo-controlled-open-select-label">

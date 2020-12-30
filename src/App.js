@@ -1,9 +1,12 @@
 import "./App.css";
-import O_food from "./components/O_food";
+import DrinkList from "./components/DrinkList";
+import FoodList from "./components/FoodList";
 function App() {
   return (
     <div className="App">
-      <O_food />
+      <FoodList />
+      <br />
+      <DrinkList />
     </div>
   );
 }

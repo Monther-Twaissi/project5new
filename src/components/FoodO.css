@@ -1,0 +1,20 @@
+.food__container {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+}
+.Space__bet {
+  width: 98%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+}
+.MuiCard-root {
+  position: relative !important;
+}
+/* .MuiPaper-rounded {
+  border-top: 0.5px solid rgb(235, 235, 235);
+} */

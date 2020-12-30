@@ -113,7 +113,7 @@ class ContactUs extends Component {
                 required
               />
             </div>
-            <button type="submit" className="btn" value="Submit">
+            <button type="submit" className="bton" value="Submit">
               Send Message
             </button>
           </form>

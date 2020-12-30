@@ -19,7 +19,7 @@ const Food = [
     id: 3,
     foodName: "American Burger ",
     foodDesc:
-      "Our All American Burger is a classic and easy grilled ground beef recipe seasoned with Worcestershire sauce and onion powder.",
+      "Our All American Burger is a classic and easy grilled ground beef recipe with Worcestershire sauce and onion powder.",
     foodImg:
       "https://images.unsplash.com/photo-1580372648129-cb82ef5f1052?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80",
   },
@@ -34,7 +34,7 @@ const Food = [
     id: 5,
     foodName: "Jalapeno Cheese Burger",
     foodDesc:
-      "A Tex Mex burger jacks up the flavors by mixing ground meat with jalapenos, taco sauce, refried beans, and a garlic-onion.",
+      "A Tex Mex burger jacks up the flavors by mixing ground meat with jalapenos, taco sauce and a garlic-onion.",
     foodImg:
       "https://www.briannas.com/wp-content/uploads/2014/03/recipe-jalapeno-burger-header.jpg",
   },

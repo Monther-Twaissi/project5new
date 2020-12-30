@@ -11,7 +11,7 @@ import "./FoodO.css";
 import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  root: { minWidth: 200, minHeight: 390 },
+  root: { minWidth: 200, height: 400 },
   formControl: {
     minWidth: 120,
   },

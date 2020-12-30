@@ -32,7 +32,7 @@ const Drink = [
   },
   {
     id: 50,
-    drinkName: "Honest Kids® Appley Ever After® Organic Juice Drink",
+    drinkName: "Honest Kids®",
     drinkDesc:
       "Honest Kids Juice drink is sweetened only with fruit juice, and it’s an organic drink perfect for a kids meal!",
     drinkImg:

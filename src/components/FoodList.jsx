@@ -16,6 +16,7 @@ function FoodList() {
         foodImg={x.foodImg}
         foodName={x.foodName}
         foodDesc={x.foodDesc}
+        price={x.price}
       />
     </Grid>
   ));

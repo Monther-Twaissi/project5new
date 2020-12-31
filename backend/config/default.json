@@ -1,0 +1,4 @@
+{
+    "mongoURI" : "mongodb+srv://burgerTag:burgerTag2021@burgertag.i1kzg.mongodb.net/BurgerTagDB?retryWrites=true&w=majority",
+    "jwtSecret" : "burgertagsecret"
+}

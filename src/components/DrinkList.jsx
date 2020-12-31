@@ -16,6 +16,7 @@ function DrinkList() {
         drinkImg={x.drinkImg}
         drinkName={x.drinkName}
         drinkDesc={x.drinkDesc}
+        price={x.price}
       />
     </Grid>
   ));

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-// import { Redirect } from 'react-router';
+import { Redirect } from 'react-router';
 import "linearicons";
 import "./ma-form.css";
 
@@ -12,8 +12,11 @@ export default class Landing extends Component {
       mobileR: '',
       passwordR: '',
       confirmPasswordR: '',
+      userErrorR: '',
       usernameL: '',
       passwordL: '',
+      userErrorL: "",
+      redirect: false,
     }
   }
   handelInputChange = (e) => {
@@ -30,9 +33,17 @@ export default class Landing extends Component {
       mobile: rData.mobileR,
       password: rData.passwordR,
     };
-    axios.post('http://localhost:5000/user/register', newUser)
+    axios.post('http://localhost:5000/api/users/register', newUser)
       .then((res) => {
-        console.log("registered")
+        if (res.data === "User already exist") {
+          this.setState({
+            userErrorR: "User already exist",
+          });
+        } else {
+          this.setState({
+            redirect: true,
+          });
+        }
       })
       .catch((err) => console.log(err));
   }
@@ -43,13 +54,28 @@ export default class Landing extends Component {
       username: rData.usernameL,
       password: rData.passwordL,
     };
-    axios.post('http://localhost:5000/user/login', user)
+    axios.post('http://localhost:5000/api/auth/login', user)
       .then((res) => {
-        console.log("Login")
+        if (res.data === "User not found") {
+          this.setState({
+            userErrorL: "User not found",
+          });
+        } else if (res.data === "Wrong Username or password") {
+          this.setState({
+            userErrorL: "Wrong Username or password",
+          });
+        } else {
+          this.setState({
+            redirect: true,
+          })
+        }
       })
       .catch((err) => console.log(err));
   }
   render() {
+    if (this.state.redirect) {
+      return <Redirect to="/" />;
+    }
     return (
       <section id="landing">
         <div className="container" style={{ fontFamily: "Itim" }}>
@@ -58,12 +84,6 @@ export default class Landing extends Component {
               className="col-lg-5 col-md-5 col-sm-12 "
               style={{ margin: "12vh auto 15vh auto" }}
             >
-              {this.state.msg !== null ? (
-                <div className="p-3 mb-2 bg-danger text-white">
-                  {" "}
-                  {this.state.msg}{" "}
-                </div>
-              ) : null}
               <img
                 src="https://www.dotit.com/media/allergen-awareness-training/chef.png"
                 alt=""
@@ -80,41 +100,79 @@ export default class Landing extends Component {
                   <span className="lnr lnr-user"></span>
                   <input
                     type="text"
-                    className="form-control"
                     placeholder="Username"
                     name="usernameR"
                     onChange={this.handelInputChange}
+                    className={
+                      this.state.userErrorR ?
+                        "form-control form-group is-invalid" :
+                        "form-control form-group"
+                    }
+                    required
                   />
                 </div>
                 <div className="form-holder">
                   <span className="lnr lnr-phone-handset"></span>
                   <input
                     type="number"
-                    className="form-control"
                     placeholder="Phone Number"
                     name="mobileR"
                     onChange={this.handelInputChange}
+                    className={
+                      this.state.userErrorS ?
+                      "form-control form-group is-invalid" :
+                      "form-control form-group"
+                    }
+                    required
                   />
+                  <div className = {
+                    this.state.userErrorR
+                      ? "invalid-feedback error"
+                      : "invalid-feedback" }>
+                   {this.state.userErrorR}
+                  </div>
                 </div>
                 <div className="form-holder">
                   <span className="lnr lnr-lock"></span>
                   <input
                     type="password"
-                    className="form-control"
                     placeholder="Password"
                     name="passwordR"
                     onChange={this.handelInputChange}
+                    className={
+                      this.state.userErrorR ?
+                      "form-control form-group is-invalid" :
+                      "form-control form-group"
+                    }
+                    required
                   />
+                  <div className = {
+                    this.state.userErrorR
+                      ? "invalid-feedback error"
+                      : "invalid-feedback" }>
+                   {this.state.userErrorR}
+                  </div>
                 </div>
                 <div className="form-holder">
                   <span className="lnr lnr-lock"></span>
                   <input
                     type="password"
-                    className="form-control"
                     placeholder="Confirm Password"
                     name="confirmPasswordR"
                     onChange={this.handelInputChange}
+                    className={
+                      this.state.userErrorS ?
+                      "form-control form-group is-invalid" :
+                      "form-control form-group"
+                    }
+                    required
                   />
+                  <div className = {
+                    this.state.userErrorR
+                      ? "invalid-feedback error"
+                      : "invalid-feedback" }>
+                   {this.state.userErrorR}
+                  </div>
                 </div>
                 <button
                   type="submit"
@@ -125,17 +183,12 @@ export default class Landing extends Component {
                 </button>
               </form>
             </div>
-            <div className = "vertical"></div>
+            <div className="vertical"></div>
+            {/* Login */}
             <div
               className="col-lg-5 col-md-5 col-sm-12 "
               style={{ margin: "12vh auto 15vh auto" }}
             >
-              {this.state.msg !== null ? (
-                <div className="p-3 mb-2 bg-danger text-white">
-                  {" "}
-                  {this.state.msg}{" "}
-                </div>
-              ) : null}
               <form onSubmit={this.onSubmitL} className="ma-form">
                 <h2 className="marginTitle">
                   <b>Login</b>
@@ -147,21 +200,43 @@ export default class Landing extends Component {
                   <span className="lnr lnr-user"></span>
                   <input
                     type="text"
-                    className="form-control"
                     placeholder="Username"
                     name="usernameL"
                     onChange={this.handelInputChange}
+                    className={
+                      this.state.userErrorL ?
+                      "form-control form-group is-invalid" :
+                      "form-control form-group"
+                    }
+                    required
                   />
+                  <div className = {
+                    this.state.userErrorL
+                      ? "invalid-feedback error"
+                      : "invalid-feedback" }>
+                   {this.state.userErrorL}
+                  </div>
                 </div>
                 <div className="form-holder">
                   <span className="lnr lnr-lock"></span>
                   <input
                     type="password"
-                    className="form-control"
                     placeholder="Password"
                     name="passwordL"
                     onChange={this.handelInputChange}
+                    className={
+                      this.state.userErrorL ?
+                      "form-control form-group is-invalid" :
+                      "form-control form-group"
+                    }
+                    required
                   />
+                  <div className = {
+                    this.state.userErrorL
+                      ? "invalid-feedback error"
+                      : "invalid-feedback" }>
+                   {this.state.userErrorL}
+                  </div>
                 </div>
                 <button
                   type="submit"

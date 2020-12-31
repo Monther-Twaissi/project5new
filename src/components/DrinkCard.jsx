@@ -50,6 +50,9 @@ export default function DrinkCard(props) {
           <Typography gutterBottom variant="h5" component="h2">
             {props.drinkName}
           </Typography>
+          <Typography variant="h6" color="textSecondary" component="h3">
+            Price: {props.price} <small>JOD</small>
+          </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             {props.drinkDesc}
           </Typography>

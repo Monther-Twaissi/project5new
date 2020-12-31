@@ -48,7 +48,6 @@ const Header = () => {
               <Link to="/log" className="nav-link">
                 Sign Up
               </Link>
-              {/* sign up & sign in */}
             </li>
           </ul>
         </div>

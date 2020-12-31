@@ -31,9 +31,6 @@ const Food = [
     },
 ];
 
-
-
-
 const Drink = [
     {
         id: 1,

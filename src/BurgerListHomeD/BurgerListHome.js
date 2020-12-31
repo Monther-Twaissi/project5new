@@ -27,4 +27,4 @@ function BurgerListHome() {
     )
 }
 
-export default BurgerListHome
+export default BurgerListHome;

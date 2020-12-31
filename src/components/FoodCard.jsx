@@ -20,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
 export default function FoodCard(props) {
   const [quantity, setQuantity] = React.useState("");
   const [open, setOpen] = React.useState(false);
-
   const classes = useStyles();
   const handleChange = (event) => {
     setQuantity(event.target.value);
@@ -48,6 +47,7 @@ export default function FoodCard(props) {
         cardDesc: props.foodDesc,
         cardImg: props.foodImg,
         quantity: quantity,
+        price: props.price,
       };
       axios.post("http://localhost:5000/api/orders", newJSON).then(() => {});
     }
@@ -66,6 +66,9 @@ export default function FoodCard(props) {
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             {props.foodName}
+          </Typography>
+          <Typography variant="h6" color="textSecondary" component="h3">
+            Price: {props.price} <small>JOD</small>
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             {props.foodDesc}

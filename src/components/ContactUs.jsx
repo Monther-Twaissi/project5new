@@ -23,7 +23,6 @@ class ContactUs extends Component {
     this.setState({
       fullName: event.target.value,
     });
-    // console.log('fullName: ' + this.state.fullName);
   }
 
   changeEmail(event) {
@@ -47,16 +46,14 @@ class ContactUs extends Component {
   onSubmit(event) {
     event.preventDefault();
 
-    const registered = {
+    const newMessage = {
       fullName: this.state.fullName,
       email: this.state.email,
       subject: this.state.subject,
       textarea: this.state.textarea,
     };
-    // console.log(registered);
 
-    axios
-      .post("http://localhost:7000/app/signup", registered)
+    axios.post("http://localhost:5000/api/contact/message", newMessage)
       .then((response) => {
         console.log(response.data);
         alert("succsses signup");

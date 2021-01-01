@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Redirect } from 'react-router';
+import { Redirect } from "react-router";
 import "linearicons";
 import "./ma-form.css";
 
@@ -8,32 +8,33 @@ export default class Landing extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      usernameR: '',
-      mobileR: '',
-      passwordR: '',
-      confirmPasswordR: '',
-      userErrorR: '',
-      usernameL: '',
-      passwordL: '',
+      usernameR: "",
+      mobileR: "",
+      passwordR: "",
+      confirmPasswordR: "",
+      userErrorR: "",
+      usernameL: "",
+      passwordL: "",
       userErrorL: "",
       redirect: false,
-    }
+    };
   }
   handelInputChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
-    console.log(e.target.value)
+    console.log(e.target.value);
   };
   onSubmitR = (e) => {
     e.preventDefault();
-    const  rData = this.state;
+    const rData = this.state;
     const newUser = {
       username: rData.usernameR,
       mobile: rData.mobileR,
       password: rData.passwordR,
     };
-    axios.post('http://localhost:5000/api/users/register', newUser)
+    axios
+      .post("http://localhost:5000/api/users/register", newUser)
       .then((res) => {
         if (res.data === "User already exist") {
           this.setState({
@@ -46,15 +47,16 @@ export default class Landing extends Component {
         }
       })
       .catch((err) => console.log(err));
-  }
+  };
   onSubmitL = (e) => {
     e.preventDefault();
-    const  rData = this.state;
+    const rData = this.state;
     const user = {
       username: rData.usernameL,
       password: rData.passwordL,
     };
-    axios.post('http://localhost:5000/api/auth/login', user)
+    axios
+      .post("http://localhost:5000/api/auth/login", user)
       .then((res) => {
         if (res.data === "User not found") {
           this.setState({
@@ -67,11 +69,11 @@ export default class Landing extends Component {
         } else {
           this.setState({
             redirect: true,
-          })
+          });
         }
       })
       .catch((err) => console.log(err));
-  }
+  };
   render() {
     if (this.state.redirect) {
       return <Redirect to="/" />;
@@ -80,10 +82,7 @@ export default class Landing extends Component {
       <section id="landing">
         <div className="container" style={{ fontFamily: "Itim" }}>
           <div className="row ">
-            <div
-              className="col-lg-5 col-md-5 col-sm-12 "
-              style={{ margin: "12vh auto 15vh auto" }}
-            >
+            <div className="col-lg-5 form1 ">
               <img
                 src="https://www.dotit.com/media/allergen-awareness-training/chef.png"
                 alt=""
@@ -104,9 +103,9 @@ export default class Landing extends Component {
                     name="usernameR"
                     onChange={this.handelInputChange}
                     className={
-                      this.state.userErrorR ?
-                        "form-control form-group is-invalid" :
-                        "form-control form-group"
+                      this.state.userErrorR
+                        ? "form-control form-group is-invalid"
+                        : "form-control form-group"
                     }
                     required
                   />
@@ -119,17 +118,20 @@ export default class Landing extends Component {
                     name="mobileR"
                     onChange={this.handelInputChange}
                     className={
-                      this.state.userErrorS ?
-                      "form-control form-group is-invalid" :
-                      "form-control form-group"
+                      this.state.userErrorS
+                        ? "form-control form-group is-invalid"
+                        : "form-control form-group"
                     }
                     required
                   />
-                  <div className = {
-                    this.state.userErrorR
-                      ? "invalid-feedback error"
-                      : "invalid-feedback" }>
-                   {this.state.userErrorR}
+                  <div
+                    className={
+                      this.state.userErrorR
+                        ? "invalid-feedback error"
+                        : "invalid-feedback"
+                    }
+                  >
+                    {this.state.userErrorR}
                   </div>
                 </div>
                 <div className="form-holder">
@@ -140,17 +142,20 @@ export default class Landing extends Component {
                     name="passwordR"
                     onChange={this.handelInputChange}
                     className={
-                      this.state.userErrorR ?
-                      "form-control form-group is-invalid" :
-                      "form-control form-group"
+                      this.state.userErrorR
+                        ? "form-control form-group is-invalid"
+                        : "form-control form-group"
                     }
                     required
                   />
-                  <div className = {
-                    this.state.userErrorR
-                      ? "invalid-feedback error"
-                      : "invalid-feedback" }>
-                   {this.state.userErrorR}
+                  <div
+                    className={
+                      this.state.userErrorR
+                        ? "invalid-feedback error"
+                        : "invalid-feedback"
+                    }
+                  >
+                    {this.state.userErrorR}
                   </div>
                 </div>
                 <div className="form-holder">
@@ -161,17 +166,20 @@ export default class Landing extends Component {
                     name="confirmPasswordR"
                     onChange={this.handelInputChange}
                     className={
-                      this.state.userErrorS ?
-                      "form-control form-group is-invalid" :
-                      "form-control form-group"
+                      this.state.userErrorS
+                        ? "form-control form-group is-invalid"
+                        : "form-control form-group"
                     }
                     required
                   />
-                  <div className = {
-                    this.state.userErrorR
-                      ? "invalid-feedback error"
-                      : "invalid-feedback" }>
-                   {this.state.userErrorR}
+                  <div
+                    className={
+                      this.state.userErrorR
+                        ? "invalid-feedback error"
+                        : "invalid-feedback"
+                    }
+                  >
+                    {this.state.userErrorR}
                   </div>
                 </div>
                 <button
@@ -185,15 +193,12 @@ export default class Landing extends Component {
             </div>
             <div className="vertical"></div>
             {/* Login */}
-            <div
-              className="col-lg-5 col-md-5 col-sm-12 "
-              style={{ margin: "12vh auto 15vh auto" }}
-            >
-              <form onSubmit={this.onSubmitL} className="ma-form">
+            <div className="col-lg-5 form2 ">
+              <form onSubmit={this.onSubmitL} className="ma-form2">
                 <h2 className="marginTitle">
                   <b>Login</b>
-                  <br/>
-                  Your Account 
+                  <br />
+                  Your Account
                 </h2>
                 <br />
                 <div className="form-holder">
@@ -204,17 +209,20 @@ export default class Landing extends Component {
                     name="usernameL"
                     onChange={this.handelInputChange}
                     className={
-                      this.state.userErrorL ?
-                      "form-control form-group is-invalid" :
-                      "form-control form-group"
+                      this.state.userErrorL
+                        ? "form-control form-group is-invalid"
+                        : "form-control form-group"
                     }
                     required
                   />
-                  <div className = {
-                    this.state.userErrorL
-                      ? "invalid-feedback error"
-                      : "invalid-feedback" }>
-                   {this.state.userErrorL}
+                  <div
+                    className={
+                      this.state.userErrorL
+                        ? "invalid-feedback error"
+                        : "invalid-feedback"
+                    }
+                  >
+                    {this.state.userErrorL}
                   </div>
                 </div>
                 <div className="form-holder">
@@ -225,17 +233,20 @@ export default class Landing extends Component {
                     name="passwordL"
                     onChange={this.handelInputChange}
                     className={
-                      this.state.userErrorL ?
-                      "form-control form-group is-invalid" :
-                      "form-control form-group"
+                      this.state.userErrorL
+                        ? "form-control form-group is-invalid"
+                        : "form-control form-group"
                     }
                     required
                   />
-                  <div className = {
-                    this.state.userErrorL
-                      ? "invalid-feedback error"
-                      : "invalid-feedback" }>
-                   {this.state.userErrorL}
+                  <div
+                    className={
+                      this.state.userErrorL
+                        ? "invalid-feedback error"
+                        : "invalid-feedback"
+                    }
+                  >
+                    {this.state.userErrorL}
                   </div>
                 </div>
                 <button

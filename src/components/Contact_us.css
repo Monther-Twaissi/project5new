@@ -25,7 +25,7 @@
   opacity: 0.92;
 }
 
-.container__us p {
+.container__us h5 {
   text-align: center;
   letter-spacing: 1px;
   font-size: 45px;
@@ -62,12 +62,12 @@
 
 .bton {
   width: 15.625rem;
-  background: #486255;
+  background: #fe9e47;
   height: 50px;
   line-height: 50px;
   text-align: center;
   border-radius: 10px;
-  margin: 0 auto;
+  margin: 0 18rem;
   color: #fff;
   text-transform: uppercase;
   cursor: pointer;

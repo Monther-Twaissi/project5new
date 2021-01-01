@@ -53,7 +53,8 @@ class ContactUs extends Component {
       textarea: this.state.textarea,
     };
 
-    axios.post("http://localhost:5000/api/contact/message", newMessage)
+    axios
+      .post("http://localhost:5000/api/contact/message", newMessage)
       .then((response) => {
         console.log(response.data);
         alert("succsses signup");
@@ -71,7 +72,11 @@ class ContactUs extends Component {
     return (
       <div className="container__all">
         <div className="container__us">
-          <p>CONTACT US</p>
+          <h5 className="contcatHeader">GET IN TOUCH</h5>
+          <p style={{ textAlign: "center" }}>
+            Feel free to contact us about your thoughts, we are always happy to
+            hear from our customers.
+          </p>
           <form onSubmit={this.onSubmit}>
             <div className="login">
               <input
